@@ -1,0 +1,8 @@
+--- #Playbook for cron module
+- hosts: redhat
+  gather_facts: no
+  sudo: yes
+  
+  tasks: 
+    - name: Listing the playbook files
+      cron: name="Remove HTTPD, Lynx, Telnet, Tomcat" minute="*/5" job="/bin/yum remove -y httpd lynx telnet tomcat" state=present user=root

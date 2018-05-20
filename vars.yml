@@ -1,0 +1,3 @@
+control_server: localhost
+distribution: Centos
+document_root: /var/www/html/

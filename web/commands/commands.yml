@@ -1,0 +1,2 @@
+- name: Check if httpd service is running
+  raw: yum list installed |grep httpd >> /tmp/pkg.log

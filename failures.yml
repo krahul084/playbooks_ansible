@@ -1,0 +1,16 @@
+--- # Playbook to describe error handling
+- hosts: apacheweb
+  sudo: yes
+  connection: ssh
+  user: ansible
+  gather_facts: no
+
+  tasks: 
+    - name: Failure task executing
+      command: /bin/false
+      ignore_errors: yes
+      
+    - name: Install telnet package
+      yum: 
+        pkg: telnet
+        state: latest

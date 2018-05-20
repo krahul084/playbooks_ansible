@@ -1,0 +1,25 @@
+--- # My New playbook to learn playbook structure
+- hosts: redhat 
+  user: user
+  sudo: yes
+  connection: ssh
+  gather_facts: no
+  vars:
+    playbook_version: 0.1b
+  vars_files:
+    - conf/copyright.yml
+    - conf/webconf.yml
+  vars_prompt:
+    - name: Web_Domain
+      prompt: Web Domain
+  tasks:
+    - name: Installing the httpd server
+      action: yum name=httpd state=installed
+      notify: 
+        - Restart httpd
+        - Enable httpd
+  handlers:
+    - name: Restart httpd
+      action: service name=httpd state=restarted
+    - name: Enable httpd
+      action: service name=httpd enabled=yes

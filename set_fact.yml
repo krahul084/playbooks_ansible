@@ -1,0 +1,10 @@
+--- # Set_fact module description
+- hosts: all
+  sudo: yes
+  gather_facts: no
+ 
+  tasks: 
+    - name: set fact 
+      set_fact: 
+         singlefact: SOMETHING
+    - debug: msg={{ singlefact }}

@@ -1,0 +1,10 @@
+--- # STAT Module Example
+- hosts: apacheweb
+  sudo: yes
+  gather_facts: no
+  tasks: 
+  - name: Does a file/directory in a path exists
+    stat: path=/home/ansible/abc
+    register: p
+  - debug: msg="The Path exists and is a Directory"
+    when: p.stat.isdir is defined and p.stat.isdir

@@ -1,0 +1,8 @@
+--- # Describes script module
+- hosts: all
+  sudo: yes
+  gather_facts: no
+
+  tasks: 
+   - name: execute and capture script output ina a log file
+     script: /home/ansible/demo.sh creates=/home/ansible/demo.log

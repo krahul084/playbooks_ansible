@@ -1,0 +1,9 @@
+--- # At Module example
+- hosts: apacheweb
+  user: ansible
+  sudo: yes
+  gather_facts: no
+ 
+  tasks:
+    - name: Example of a future command with the AT example
+      at: command="ls /var/log > /home/ansible/at1.log" state=present count=1 units="minutes" unique=true

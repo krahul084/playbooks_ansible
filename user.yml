@@ -1,0 +1,18 @@
+--- # Playbook to create user apache_test
+- hosts: apacheweb
+  sudo: yes
+  gather_facts: no
+
+  tasks: 
+   - name: Create user apachetest
+     user:
+       name: apachetest
+       password: '$6$AEN4SQm7ElijFRsa$QXPGLy.nexNIGTB7vlquy5fawKYeomYxaywLeTyTIEPFsxZPQ9eQ1KWoM4v6/zquChF/TXuMyptP6Wlwaz/EQ1'
+       shell: /bin/bash
+       createhome: yes
+       home: /home/apachetest
+       system: no
+       state: present
+       remove: no
+       groups: 
+          - wheel

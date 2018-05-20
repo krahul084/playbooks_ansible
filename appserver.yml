@@ -1,0 +1,10 @@
+--- #Playbook to install elinks package on app servers
+- hosts: appserver
+  vars:
+    author: user
+    written_on: wednesday
+  vars_files: 
+  - vars.yml
+  tasks:
+  - name: Install elinks on appserver
+    yum: pkg=elinks state=installed update_cache=true

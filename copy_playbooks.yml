@@ -1,0 +1,8 @@
+--- #Playbook to copy the playbook directory to all the hosts
+- hosts: redhat
+  sudo: yes
+  gather_facts: no
+
+  tasks: 
+    - name: Copy playbooks directory
+      copy: src=/home/ansible/Playbooks dest=/home/ansible/ owner=ansible group=ansible mode=0775 backup=yes

@@ -1,0 +1,8 @@
+--- # DNF-Future Redhat package management system module example
+- hosts: apacheweb
+  sudo: yes
+  gather_facts: no
+ 
+  tasks:
+    - name: install web server
+      dnf: name=httpd state=latest

@@ -1,0 +1,8 @@
+--- #Take commandline parameters
+- hosts: '{{ hosts }}'
+  sudo: yes
+  gather_facts: no
+ 
+  tasks:
+    - name: Install pkg
+      yum: pkg='{{ pkg }}' state=latest

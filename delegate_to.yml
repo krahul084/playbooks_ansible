@@ -1,0 +1,12 @@
+--- #Playbook to describe the delegate to functionality
+- hosts: apacheweb
+  sudo: yes
+  user: ansible
+  gather_facts: no
+  connection: ssh
+  tasks:
+    - name: ping on localsystem to another system
+      shell: ping -c 4 192.168.10.13 >> /tmp/ping.out
+      delegate_to: 127.0.0.1
+    - name: install lynx
+      yum: pkg=lynx state=latest

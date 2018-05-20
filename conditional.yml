@@ -1,0 +1,11 @@
+--- #Playbook to test the functionality of conditionals
+- hosts: all
+  sudo: yes
+  gather_facts: yes
+  tasks: 
+    - name: Install elinks on redhat
+      shell: yum install -y elinks
+      when: ansible_os_family == 'Redhat'
+    - name: Install lynx on Debian
+      shell: apt-get install lynx
+      when: ansible_os_family == 'Debian'

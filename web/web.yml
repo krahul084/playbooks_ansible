@@ -1,0 +1,11 @@
+--- # Playbook for apache installation in centos
+- hosts: apacheweb
+  sudo: yes
+  gather_facts: yes
+  vars_files: 
+    - variables/variables.yml
+  tasks:
+    - include: packages/packages.yml
+    - include: commands/commands.yml
+  handlers: 
+    - include: handlers/handlers.yml

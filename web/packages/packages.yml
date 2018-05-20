@@ -1,0 +1,3 @@
+- name: Installing the httpd service
+  yum: pkg=httpd state=installed
+  notify: restart httpd

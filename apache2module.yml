@@ -1,0 +1,8 @@
+--- #Playbook for apache2 module
+- hosts: ubuntu
+  sudo: yes
+  gather_facts: no
+
+  tasks: 
+   - name: Enable alias module
+     apache2_module: state=absent name=alias

@@ -1,0 +1,23 @@
+--- #Installing the apache package and setting it up this is just a raw version
+- hosts: apacheweb
+  user: user
+  sudo: yes
+  gather_facts: no
+
+  tasks: 
+    - name: Log the timestamp when the installation starts
+      raw: /usr/bin/date > /tmp/playbook_log
+    - name: Install the apache web application
+      yum: pkg=httpd state=installed
+    - name: Start the http service
+      service: name=httpd state=started
+    - name: Verify the service is running or not
+      command: systemctl status httpd
+      register: result
+    - debug: var=result
+    - name: Install the client-telnet software
+      yum: pkg=telnet state=installed
+    - name: Install the client-lynx software
+      yum: pkg=lynx state=installed
+    - name: Log the timestamp when the installation ends
+      raw: /usr/bin/date >> /tmp/playbook_log
