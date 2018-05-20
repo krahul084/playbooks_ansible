@@ -1,0 +1,11 @@
+--- # mail module description
+- hosts: apacheweb
+  user: ansible
+  tasks: 
+   - name: Send an email to the ansible user indicating that the build completion
+     mail:
+       host: 'localhost'
+       port: 25
+       to: "ansible"
+       subject: "Our host has finished deploying"
+       body: "System called {{ ansible_hostname }} to successfully setup"

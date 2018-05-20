@@ -1,0 +1,11 @@
+--- # MYSQL_USER MODULE
+- hosts: appserver
+  user: ansible
+  connection: ssh
+  sudo: yes
+  gather_facts: yes
+  tasks: 
+   - name: Install the Python MySQL Support Libraries
+     yum: pkkg=My-SQL-python state=latest
+   - name: Create a mysql user bob and grant him all access
+     mysql_user: name=bob password=password state=present priv=*.*:ALL login_user=root login_password=password123

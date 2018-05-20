@@ -1,0 +1,9 @@
+--- # ACL MODULE
+- hosts: apacheweb
+  sudo: yes
+  gather_facts: no
+  tasks: 
+    - name: Set ACL information on the /etc/test.txt remote file
+      acl: name=/etc/test.txt entity=test etype=user permissions="rw" state=absent
+      register: aclinfo
+      debug: var=aclinfo

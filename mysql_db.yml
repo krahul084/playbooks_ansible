@@ -1,0 +1,13 @@
+--- # MYSQL_DB MODULE
+- hosts: appserver
+  user: ansible
+  connection: ssh
+  sudo: yes
+  gather_facts: yes
+  tasks: 
+   - name: Install the Python MySQL Support Libraries
+     yum: pkkg=My-SQL-python state=latest
+   - name: Create a New Test DB called MyNewDB
+     mysql_db: name=MyNewDB state=present login_user=root login_password=password123
+   - name: Exporting the database dump tp /var/lib
+     mysql_db: name=MyNewDB state=dump target=/var/lib/MyNewDB.sql login_user=root login_password=password123

@@ -1,0 +1,6 @@
+--- # Git Module
+- hosts: apacheweb
+  gather_facts: no
+  tasks: 
+    - name: Checking out a git repo on the remote server
+      git: repo=ssh://ansible@vm2/home/ansible/chef_repo dest=/home/ansible/chef clone=yes 

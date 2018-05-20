@@ -1,0 +1,9 @@
+--- # kernel_blacklist MODULE
+- hosts: appserver
+  user: ansible
+  connection: ssh
+  sudo: yes
+  gather_facts: yes
+  tasks: 
+    - name: Blacklist the DUMMY kernel module
+      kernel_blacklist: name=dummy state=present
