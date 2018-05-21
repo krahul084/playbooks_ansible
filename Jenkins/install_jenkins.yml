@@ -1,0 +1,36 @@
+--- # Playbook to install Jenkins server
+- hosts: vm2
+  user: ansible
+  connection: ssh
+  sudo: yes
+  gather_facts: yes
+  vars_files:
+    - jenkins_var.yml
+
+  tasks:
+    - name: Prerequisites- Install Java
+      yum: pkg=java state=latest update_cache=yes
+    - name: Jenkins Install- Enable the Jenkins repository
+      yum_repository: 
+        name: jenkins
+        description: Jenkins repository to install Jenkins server
+        baseurl: '{{ jenkins_base_url }}'
+        gpgkey: '{{ jenkins_key_url }}'
+        enabled: yes
+        gpgcheck: no
+        state: present
+    - name: Jenkins Install- Installing Jenkins package
+      yum: pkg=jenkins state=installed
+      notify: 
+        - start Jenkins
+        - wait for Jenkins_start
+        
+
+  handlers:
+    - name: start Jenkins
+      service: name=jenkins state=started enabled=yes
+    - name: wait for Jenkins_start
+      wait_for:
+         port: 8080
+         state: started
+    - debug: msg="Jenkins Installed Successfully"

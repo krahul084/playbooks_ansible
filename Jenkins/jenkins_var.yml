@@ -1,0 +1,4 @@
+default_java_path: /usr/bin/java
+custom_java_path: /usr/java/latest/bin/java
+jenkins_base_url: http://pkg.jenkins.io/redhat-stable
+jenkins_key_url: http://pkg.jenkins.io/redhat-stable/jenkins.io.key
