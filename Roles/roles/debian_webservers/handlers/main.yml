@@ -1,0 +1,5 @@
+- name: restart httpd
+  service: name={{ redhat_apache }} state=started enabled=yes
+
+- name: restart apache
+  service: name={{ debian_apache }} state=started enabled=yes

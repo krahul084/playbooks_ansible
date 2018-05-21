@@ -1,0 +1,15 @@
+--- #Webserver role example
+- hosts: apacheweb
+  sudo: yes
+  connection: ssh
+  user: ansible
+  gather_facts: yes
+  pre_tasks:
+   - name: capture the start time of role
+     raw: /bin/date >> /home/ansible/role.log
+  roles: 
+    - { role: redhat_webservers, when: "ansible_os_family == 'RedHat'" }
+    - { role: debian_webservers, when: "ansible_os_family == 'Debian'" }
+  post_tasks:
+   - name: capturing the end time of role
+     raw: /bin/date >> /home/ansible/role.log

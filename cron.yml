@@ -4,5 +4,5 @@
   sudo: yes
   
   tasks: 
-    - name: Listing the playbook files
+    - name: Adding the cron to remove httpd,lynx,telnet and tomcat  
       cron: name="Remove HTTPD, Lynx, Telnet, Tomcat" minute="*/5" job="/bin/yum remove -y httpd lynx telnet tomcat" state=present user=root
